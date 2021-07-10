@@ -1,0 +1,23 @@
+<div class="container">
+    <mat-card class="main-card">
+      <mat-card-header>
+        <mat-card-subtitle>Devinez la capitale de :</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <h2 class="text-center">{{ currentCountry.name }}</h2>
+        <mat-form-field color="primary" appearance="outline" [ngClass]="isWrong ? 'animated shake' : ''"
+          #answerField >
+          <mat-label>Capitale</mat-label>
+          <input [(ngModel)]="userAnswer" matInput placeholder="Tapez la capitale..."
+            (keyup.enter)="onSubmit(currentCountry)" #answerInput>
+            <mat-icon *ngIf="isCorrect" class="correct" aria-hidden="false" aria-label="correct">check</mat-icon>
+            <mat-icon *ngIf="isWrong" class="wrong" aria-hidden="false" aria-label="wrong">close</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="onSubmit(currentCountry)">Valider</button>
+        <app-timer></app-timer>
+        <p class="text-center countriesleft">Pays restants : {{ countriesLeft }}/196</p>
+        <p class="text-center countriesleft">Vos points : {{ userPoints }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

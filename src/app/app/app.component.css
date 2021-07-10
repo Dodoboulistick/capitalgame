@@ -1,0 +1,61 @@
+.main-card {
+  max-width: 70%;
+  display: block;
+  margin: 80px auto 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.main-card h2 {
+  margin: 40px 0;
+  font-size: 40px;
+}
+
+.main-card button {
+  margin-left: 15px;
+  vertical-align: 10%;
+}
+
+.main-card mat-form-field {
+  width: 40%;
+  display: block;
+  margin: auto;
+
+}
+
+.main-card button {
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+
+.main-card mat-card-content p.countriesleft {
+  font-style: italic;
+  color: #838383;
+}
+
+mat-card-header {
+  text-align: center;
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+
+.correct {
+  position: absolute;
+  right: 10px;
+  top: -2px;
+  font-size: 40px;
+  color: #22ff00;
+}
+
+.wrong {
+  position: absolute;
+  right: 10px;
+  top: -2px;
+  font-size: 40px;
+  color: #ff0000;
+}
