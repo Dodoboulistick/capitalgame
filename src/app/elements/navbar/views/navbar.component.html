@@ -1,5 +1,18 @@
-<mat-toolbar color="primary">
+<div class="container" id="navbar">
+  <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Jeu des Pays/Capitales</span>
-      <span class="example-spacer"></span>
+      <a class="nav-footer-link" routerLink="/">Jeu des Pays/Capitales</a>
+      <span class="toolbar-spacer"></span>
+      <nav>
+        <ul>
+          <li><a [routerLink]="['/game', 'europe']">Europe</a></li>
+          <li><a [routerLink]="['/game', 'afrique']">Afrique</a></li>
+          <li><a [routerLink]="['/game', 'asie']">Asie</a></li>
+          <li><a [routerLink]="['/game', 'amerique']">Amérique</a></li>
+          <li><a [routerLink]="['/game', 'oceanie']">Océanie</a></li>
+          <li><a [routerLink]="['/game', 'monde']">Monde</a></li>
+        </ul>
+      </nav>
     </mat-toolbar-row>
+  </mat-toolbar>
+</div>

@@ -1,4 +1,4 @@
-.main-card {
+.mat-card {
   max-width: 70%;
   display: block;
   margin: 80px auto 0 auto;
@@ -58,4 +58,117 @@ mat-card-header {
   top: -2px;
   font-size: 40px;
   color: #ff0000;
+}
+
+#footer{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+
+#footer h2{
+  display: block;
+  margin: auto;
+}
+
+
+/******   HOME    *******/
+
+#home mat-card-title{
+  font-size: 38px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  line-height: 40px;
+}
+
+#home mat-form-field {
+  width: fit-content;
+  display: block;
+  margin: auto;
+}
+
+#home mat-card-content {
+  text-align: center;
+}
+
+.presentation{
+  width: 70%;
+  margin: auto;
+  text-align: left;
+}
+
+#home h3{
+  font-weight: bold;
+}
+
+
+
+
+/******   NAVBAR    *******/
+
+#navbar a{
+  color: white;
+  text-decoration: none;
+}
+
+.nav-footer-link:hover{
+  text-decoration: underline !important;
+}
+
+.nav-footer-link{
+  color: white;
+  text-decoration: none;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+#navbar nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin-right: 20px;
+}
+
+#navbar nav ul li a{
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+#navbar nav ul li a:hover{
+  text-decoration: none;
+  color: rgba(255,255,255,0.4);
+}
+
+@media only screen and (max-width: 960px) {
+  #navbar .title{
+    display: block;
+    width: 100%;
+  }
+  #navbar nav ul{
+    display: none;
+  }
+}
+
+
+
+/******   GAME    *******/
+
+.timer{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#previousAnswer{
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+.red-text{
+  color: red;
+}
+
+.green-text{
+  color: green;
 }

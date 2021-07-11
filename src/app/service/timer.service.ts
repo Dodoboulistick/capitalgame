@@ -1,33 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
 
-@Component({
-    selector: 'app-timer',
-    templateUrl: 'view/timer.component.html',
-    styleUrls: ['../app/app.component.css']
+@Injectable({
+    providedIn: 'root'
 })
 
-export class TimerComponent implements OnInit {
-    title = 'capitales';
-
+export class TimerService {
     public constructor() { }
-
-    //timer
+    time: number = 0;
     displayTimer: string;
-    isRunning: boolean = false;
-    startText = 'Start';
-    time: number;
+    interval: any = null;
 
-    ngOnInit(): void {
-        this.time = 0;
-        this.stopwatch();
+    public start() {
+        if (this.interval)
+            return;
+        this.interval = setInterval(() => {
+            this.time++;
+            this.getDisplayTimer(this.time)
+        }, 1000)
     }
 
-    stopwatch() {
-        timer(0, 1000).subscribe(ellapsedCycles => {
-            this.time++;
-            this.getDisplayTimer(this.time);
-        });
+    public stop() {
+        clearInterval(this.interval);
+        this.time = 0;
+        this.getDisplayTimer(this.time)
+        this.interval = null;
     }
 
     getDisplayTimer(time: number) {

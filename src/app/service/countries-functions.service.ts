@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { CountryData } from '../service/countries.service';
 
 
@@ -7,7 +8,25 @@ import { CountryData } from '../service/countries.service';
 })
 
 export class CountriesFunctionsService {
-    public constructor() {
+    public constructor(private router: Router) {
+
+    }
+
+    getCountryListByContinent(countryList: CountryData[], continent: string): any {
+        if (continent == "monde") {
+            return countryList;
+        } else if (continent == "europe" || "asie" || "afrique" || "amerique" || "oceanie") {
+            let newCountryList: CountryData[] = [];
+            countryList.forEach(element => {
+                //lowercases then remove accents
+                if (element.continent.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == continent) {
+                    newCountryList.push(element);
+                }
+            });
+            return newCountryList;
+        } else {
+            return null;
+        }
 
     }
 

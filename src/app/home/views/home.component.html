@@ -1,0 +1,45 @@
+<div class="container" id="home">
+  <mat-card class="home-card">
+    <mat-card-header>
+      <mat-card-title>Bienvenue sur le jeu des pays/capitales</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="presentation">
+        <ul>
+          <li>Ce jeu simple vous mettra à l'épreuve sur vos connaissances sur les capitales des pays du monde.</li>
+          <li>Vous pouvez choisir un continent ou vous entrainer sur toutes les capitales du monde.</li>
+          <li>Deux fautes maximum sont acceptées, sous peine qu'il y ait le bon nombre de lettres.
+            <ul>
+              <li style="list-style-type: circle;">Par exemple, <span class="green-text">Pzris</span> est accepté, mais <span class="red-text">Pari</span> non.</li>
+            </ul>
+          </li>
+          <li>
+            Le système de point est le suivant :
+            <ul>
+              <li style="list-style-type: circle;">Chaque pays a un coefficient de difficulté (stats prises sur jetpunk). 
+                Par exemple, l'Allemagne a un coefficient de 96 (facile) là où le Burundi a un coefficient de 20 (difficile).
+              Ainsi, trouver la capitale du Burundi sera plus récompensé, et ne pas la trouver sera moins pénalisant que le même cas avec l'Allemagne.</li>
+              <li style="list-style-type: circle;">Le temps a son importance : un coefficient est affecté au timer général.
+                Ainsi, plus vous trouvez un nombre conséquent de capitales rapidement, plus vous marquez de points.</li>
+            </ul>
+          </li>
+          <li>Une prochaine mise à jour proposera un leaderboard, avec un classement des joueurs par continent.</li>
+        </ul>
+      </div>
+      <h3>Bonne chance !</h3>
+      <h4>Sélectionnez un continent :</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Continent</mat-label>
+        <mat-select [(ngModel)]="selectedOption" matNativeControl required>
+          <mat-option value="europe">Europe</mat-option>
+          <mat-option value="afrique">Afrique</mat-option>
+          <mat-option value="asie">Asie</mat-option>
+          <mat-option value="amerique">Amérique</mat-option>
+          <mat-option value="oceanie">Océanie</mat-option>
+          <mat-option value="monde">Monde</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [routerLink]="['/game', selectedOption]">Jouer</button>
+    </mat-card-content>
+  </mat-card>
+</div>
