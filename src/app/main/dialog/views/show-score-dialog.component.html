@@ -2,8 +2,13 @@
   <div class="container" id="show-score-dialog">
     <h1>Bravo, vous avez fini la liste !</h1>
     <p>Vous avez obtenu le score de {{ userScore }} points !</p>
+    <mat-form-field style="width: 100%;" appearance="fill">
+      <mat-label>Pseudo</mat-label>
+      <input matInput placeholder="Inconnu66" [(ngModel)]="pseudo">
+    </mat-form-field>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button (click)="onCancel()">Jouer</button>
+  <button mat-raised-button (click)="onAdd()">Valider</button>
+  <button mat-button (click)="onCancel()">Quitter</button>
 </mat-dialog-actions>

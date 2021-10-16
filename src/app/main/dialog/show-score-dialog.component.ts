@@ -16,9 +16,22 @@ export class ShowScoreDialog {
     ) { }
 
     userScore: number = this.data.score;
+    type: string = this.data.continent;
+    pseudo: string;
 
     public onCancel() {
         this.router.navigate(['/']);
         this.dialogRef.close();
+    }
+
+    public onAdd(){
+
+        let result = {
+            value: this.userScore,
+            user: this.pseudo? this.pseudo: 'Inconnu',
+            type: this.type
+        }
+        this.router.navigate(['/']);
+        this.dialogRef.close(result);
     }
 }

@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ShowScoreDialog } from './dialog/show-score-dialog.component';
 import { TimerService } from '../service/timer.service';
+import { ApiService } from '../service/api.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -34,9 +36,10 @@ export class GameComponent implements OnInit {
   @ViewChild("answerField") answerField: ElementRef;
   previousAnswer: string;
   isRed: boolean;
-  
+  scores: any;
+  displayedColumns: string[] = ['pseudo', 'value', 'date'];
 
-  public constructor(public timerService: TimerService, private activatedRoute: ActivatedRoute, private router: Router, private countriesFunctionsService: CountriesFunctionsService, private dialog: MatDialog) {
+  public constructor(public timerService: TimerService, private activatedRoute: ActivatedRoute, private router: Router, private countriesFunctionsService: CountriesFunctionsService, private dialog: MatDialog, public apiService: ApiService) {
   }
 
   timer: number = this.timerService.time;
@@ -45,6 +48,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.routing = this.activatedRoute.paramMap.subscribe(params => {
       this.selectedContinent = params.get('continent');
+      this.getScores();
     });
     this.activatedRoute.params.subscribe(_res => {
       this.timerService.stop();
@@ -52,6 +56,13 @@ export class GameComponent implements OnInit {
       this.previousAnswer = "";
     })
     this.initLists();
+    this.getScores();
+  }
+
+  public async getScores(){
+    let allScores: any;
+    allScores = await this.apiService.getScoresByContinent(this.selectedContinent);
+    this.scores = allScores.slice(0,10);
   }
 
   public initLists() {
@@ -79,7 +90,7 @@ export class GameComponent implements OnInit {
     if(this.countriesLeft > 0){
       this.currentCountry = this.countriesFunctionsService.getRandomCountry(this.countriesByContinentList);
     } else {
-      this.emptyList();
+      this.onAddScore();
       this.timerService.stop();
       this.initLists();
     }
@@ -141,13 +152,26 @@ export class GameComponent implements OnInit {
     return Math.floor(0.1 * res);
   }
 
-  public emptyList(){
-    this.dialog.open(ShowScoreDialog, {
+  public onAddScore(){
+    let addDialog = this.dialog.open(ShowScoreDialog, {
       width :'max-content',
       height : 'max-content',
-      data: { score: this.userPoints }
+      data: { score: this.userPoints, continent: this.selectedContinent }
+    });
+    addDialog.afterClosed().subscribe(async result => {
+      if (result) {
+        await this.apiService.createScore({
+          value: result.value,
+          user: result.user,
+          type: result.type
+        });
+        this.getScores();
+      }
     });
   }
+
+
+  
 
 }
 
