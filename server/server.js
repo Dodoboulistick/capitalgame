@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./app/models");
+const path = require('path');
+const http = require('http');
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "https://jeudescapitales.fr"
 };
 
 app.use(cors(corsOptions));
@@ -18,11 +20,15 @@ app.use(express.urlencoded({ extended: true }));
 
 db.sequelize.sync();
 
+app.use(express.static(__dirname + '/server'))
+
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Capital Game." });
+  res.sendFile(path.join(__dirname));
 });
 require("./app/routes/score.routes.js")(app);
+
+const server = http.createServer(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

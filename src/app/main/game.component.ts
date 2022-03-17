@@ -37,7 +37,7 @@ export class GameComponent implements OnInit {
   previousAnswer: string;
   isRed: boolean;
   scores: any;
-  displayedColumns: string[] = ['pseudo', 'value', 'date'];
+  displayedColumns: string[] = ['place','pseudo', 'value', 'date'];
 
   public constructor(public timerService: TimerService, private activatedRoute: ActivatedRoute, private router: Router, private countriesFunctionsService: CountriesFunctionsService, private dialog: MatDialog, public apiService: ApiService) {
   }

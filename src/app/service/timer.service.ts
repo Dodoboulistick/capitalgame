@@ -44,4 +44,16 @@ export class TimerService {
 
         this.displayTimer = minutes + ':' + seconds;
     }
+
+    public scoreDate(date: string) {
+        let res = new Date(date);
+        let day = this.fullDate(res.getDate().toString());
+        let month = this.fullDate(res.getMonth().toString());
+        let year = this.fullDate(res.getFullYear().toString());
+        return `${day}/${month}/${year}`;
+    }
+
+    public fullDate(str: string){
+        return (str.length == 1 ? "0" + str : str);
+      }
 }

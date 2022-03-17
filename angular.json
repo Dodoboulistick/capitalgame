@@ -56,8 +56,8 @@
                 }
               ],
               "outputHashing": "all",
-              "deployUrl": "/capitales/",
-              "baseHref": "/capitales/"
+              "deployUrl": "/",
+              "baseHref": "/"
             },
             "development": {
               "buildOptimizer": false,

@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Score = sequelize.define("score", {
+    const Score = sequelize.define("capitalgame_score", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
