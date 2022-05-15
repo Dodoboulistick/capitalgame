@@ -11,7 +11,8 @@ exports.create = async (req, res) => {
 };
 
 
-exports.findAll = async (req, res) => {
+exports.findAll = async (_req, res) => {
+  console.log("get succeeded")
     await Score.findAll()
       .then(data => {
         res.send(data);
@@ -31,18 +32,6 @@ exports.findByType = async (req, res) => {
       res.send(data);
     }).catch();
 };
-
-
-/* exports.findOne = async (req, res) => {
-    const id = req.params.id;
-    await Score.findOne({
-      where: { id: id }
-    })
-      .then(data => {
-        res.send(data);
-      }).catch();
-}; */
-
 
 
 exports.update = async (req, res) => {
