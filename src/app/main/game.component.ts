@@ -62,7 +62,7 @@ export class GameComponent implements OnInit {
   public async getScores(){
     let allScores: any;
     allScores = await this.apiService.getScoresByContinent(this.selectedContinent);
-    this.scores = allScores.slice(0,10);
+    if(allScores) this.scores = allScores.slice(0,10);
   }
 
   public initLists() {

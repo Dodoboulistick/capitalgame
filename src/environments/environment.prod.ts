@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
 
-  apiGetScore: window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/server/scores"
+  apiGetScore: "https://blooming-inlet-35479.herokuapp.com/scores"
 };
